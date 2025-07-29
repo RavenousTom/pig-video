@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Looping Video</title>
+  <title>Looping Video with Sound</title>
   <style>
     html, body {
       margin: 0;
@@ -24,9 +24,19 @@
   </style>
 </head>
 <body>
-  <video autoplay loop muted playsinline>
+  <video id="bg-video" autoplay loop muted playsinline>
     <source src="video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+  <script>
+    document.addEventListener("click", function () {
+      const video = document.getElementById("bg-video");
+      if (video.muted) {
+        video.muted = false;
+        video.play();
+      }
+    });
+  </script>
 </body>
 </html>

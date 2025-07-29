@@ -21,21 +21,37 @@
       object-fit: cover;
       transform: translate(-50%, -50%);
     }
+    #unmute-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
   <video id="bg-video" autoplay loop muted playsinline>
     <source src="video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
 
+  <button id="unmute-btn">🔊 Tap to Unmute</button>
+
   <script>
-    document.addEventListener("click", function () {
-      const video = document.getElementById("bg-video");
-      if (video.muted) {
-        video.muted = false;
-        video.play();
-      }
+    const video = document.getElementById("bg-video");
+    const unmuteBtn = document.getElementById("unmute-btn");
+
+    unmuteBtn.addEventListener("click", () => {
+      video.muted = false;
+      video.play();
+      unmuteBtn.style.display = "none";
     });
   </script>
 </body>
